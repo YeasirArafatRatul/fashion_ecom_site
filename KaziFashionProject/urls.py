@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from store.views import search
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('products', include('store.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('products/', include('store.urls')),
     path('', include('SiteSettings.urls')),
     path('blog/', include('blog.urls')),
+    path('search/', search, name='search'),
 ]
 
 
