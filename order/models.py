@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from store.models import Product
 from django.conf import settings
 # Create your models here.
@@ -24,7 +25,7 @@ class ShopCart(models.Model):
         return(self.quantity*self.product.new_price)
 
 
-class ShopCartForm(ModelForm):
+class ShopCartForm(forms.ModelForm):
     class Meta:
         model = ShopCart
         fields = ['quantity']

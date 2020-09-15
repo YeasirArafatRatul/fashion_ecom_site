@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic.detail import DetailView
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Product, Category
 from SiteSettings.models import Setting, Slider
@@ -11,7 +12,18 @@ from django.db.models import Q
 class DetailsView(DetailView):
     model = Product
     template_name = 'product_detail.html'
-    context_object_name = 'products'
+    context_object_name = 'product'
+
+    # this function serves the product id
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Product, id=id_)
+
+    # this will server siteSettings data to this view
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = Setting.objects.get(status=True)
+        return context
 
 
 def category_products(request, id):

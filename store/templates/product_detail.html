@@ -13,32 +13,7 @@
                     <div class="product-details-images slider-navigation-1">
                         <div class="lg-image">
                             <a class="popup-img venobox vbox-item" href="images/product/large-size/1.jpg" data-gall="myGallery">
-                                <img src="images/product/large-size/1.jpg" alt="product image">
-                            </a>
-                        </div>
-                        <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="images/product/large-size/2.jpg" data-gall="myGallery">
-                                <img src="images/product/large-size/2.jpg" alt="product image">
-                            </a>
-                        </div>
-                        <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="images/product/large-size/3.jpg" data-gall="myGallery">
-                                <img src="images/product/large-size/3.jpg" alt="product image">
-                            </a>
-                        </div>
-                        <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="images/product/large-size/4.jpg" data-gall="myGallery">
-                                <img src="images/product/large-size/4.jpg" alt="product image">
-                            </a>
-                        </div>
-                        <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="images/product/large-size/5.jpg" data-gall="myGallery">
-                                <img src="images/product/large-size/5.jpg" alt="product image">
-                            </a>
-                        </div>
-                        <div class="lg-image">
-                            <a class="popup-img venobox vbox-item" href="images/product/large-size/6.jpg" data-gall="myGallery">
-                                <img src="images/product/large-size/6.jpg" alt="product image">
+                                <img src="{{product.image.url}}" alt="product image">
                             </a>
                         </div>
                     </div>
@@ -57,7 +32,7 @@
             <div class="col-lg-7 col-md-6">
                 <div class="product-details-view-content pt-60">
                     <div class="product-info">
-                        <h2>Today is a good day Framed poster</h2>
+                        <h2>{{product.name}}</h2>
                         <!-- <span class="product-details-ref">Reference: demo_15</span>
                         <div class="rating-box pt-20">
                             <ul class="rating rating-with-review-item">
@@ -71,24 +46,23 @@
                             </ul>
                         </div> -->
                         <div class="price-box pt-20">
-                            <span class="new-price new-price-2">$57.98</span>
+                            <span class="new-price new-price-2">{{product.new_price}}</span>
                         </div>
                         <div class="product-desc">
                             <p>
-                                <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
-                                            </span>
+                                <span>{{product.description}}</span>
                             </p>
                         </div>
                         <div class="product-variants">
                         </div>
                         <div class="single-add-to-cart">
-                            <form action="#" class="cart-quantity">
+                            <form action="order/addtoshopcart/{{product.id}}" class="cart-quantity" method="POST">
                                 <div class="quantity">
                                     <label>Quantity</label>
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" value="1" type="text">
-                                        <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                        <input class="cart-plus-minus-box" value="1" type="number" min='1'>
+                                        <!-- <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div> -->
                                     </div>
                                 </div>
                                 <button class="add-to-cart" type="submit">Add to cart</button>
@@ -101,7 +75,7 @@
                                         <div class="reassurance-icon">
                                             <i class="fa fa-check-square-o"></i>
                                         </div>
-                                        <p>Security policy (edit with Customer reassurance module)</p>
+                                        <p>Cash On Delivery</p>
                                     </div>
                                 </li>
                                 <li>
@@ -109,7 +83,7 @@
                                         <div class="reassurance-icon">
                                             <i class="fa fa-truck"></i>
                                         </div>
-                                        <p>Delivery policy (edit with Customer reassurance module)</p>
+                                        <p>Delivery policy:within 7days</p>
                                     </div>
                                 </li>
                                 <li>
@@ -117,7 +91,7 @@
                                         <div class="reassurance-icon">
                                             <i class="fa fa-exchange"></i>
                                         </div>
-                                        <p> Return policy (edit with Customer reassurance module)</p>
+                                        <p> Return policy:2days easy return</p>
                                     </div>
                                 </li>
                             </ul>
