@@ -1,0 +1,37 @@
+{%extends 'base.html' %} {% load static %} {% load crispy_forms_filters %}
+<!-- title -->
+{% block title %} Login {{setting.siteTitle}} {% endblock %} {% block mainbody %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 offset-lg-1 col-md-12 order-1 order-lg-2">
+            <div class="contact-page-side-content">
+                <h3 class="contact-page-title">You are logged out</h3>
+                <p class="contact-page-message mb-25">Please Contact With Us For Any Query</p>
+                <!-- Address -->
+                <div class="single-contact-block">
+                    <h4><i class="fa fa-fax"></i> Address</h4>
+                </div>
+                <p>Address Is Not Updated Yet</p>> {% endfor %}
+                <!-- Phone -->
+                {% for data in object_list %}
+                <div class="single-contact-block">
+                    <h4><i class="fa fa-phone"></i> Phone</h4>
+                    <p>+{{data.sitePhone}}</p>
+                </div>
+                {% empty %}
+                <p>Phone Is Not Updated Yet</p>> {% endfor %}
+                <!-- Email -->
+                {% for data in object_list %}
+                <div class="single-contact-block last-child">
+                    <h4><i class="fa fa-envelope-o"></i> Email</h4>
+                    <p>{{data.siteEmail}}</p>
+                </div>
+                {% empty %}
+                <p>Email Is Not Updated Yet</p>> {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Login Content Area End Here -->
+{% endblock %}

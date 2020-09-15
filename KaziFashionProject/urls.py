@@ -20,11 +20,14 @@ from django.conf.urls.static import static
 from store.views import search
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
+    path('', include('SiteSettings.urls')),
     path('accounts/', include('accounts.urls')),
     path('products/', include('store.urls')),
-    path('', include('SiteSettings.urls')),
     path('blog/', include('blog.urls')),
+    path('order/', include('order.urls')),
+
+    path('admin/', admin.site.urls),
     path('search/', search, name='search'),
 ]
 

@@ -10,6 +10,7 @@ class Setting(models.Model):
     siteEmail = models.EmailField()
     siteAddress = models.CharField(max_length=250)
     siteAbout = models.TextField(blank=True, null=True)
+    status = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.id)

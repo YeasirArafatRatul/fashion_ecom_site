@@ -19,17 +19,66 @@
                 <div class="col-lg-9 col-md-8">
                     <div class="header-top-right">
                         <ul class="ht-menu">
+                            {% if user.is_authenticated %}
+                            <li>
+                                <a href="#">{{user.username}}</a></li>
+                            {% if user.is_admin %}
+                            <li>
+                                <a href="{% url 'admin:index' %}">Admin Panel</a></li>
+                            {% endif %}
+                            <li>
+                                <a href="{% url 'logout' %}">Logout</a></li>
+                            {% else %}
 
                             <li>
                                 <a href="{% url 'login' %}">Sign In</a></li>
                             <li>
                                 <a href="{% url 'register' %}">Sign Up</a></li>
-
+                            {% endif %}
                         </ul>
+
+                        <!-- {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                                {% endfor %}
+                        </ul>
+                        {% endif %} -->
                     </div>
+
                 </div>
                 <!-- Header Top Right Area End Here -->
             </div>
+        </div>
+        <div class="container">
+            {% if messages %}
+            <style>
+                .alert {
+                    padding: 20px;
+                    background-color: #abfd9a;
+                    color: rgb(2, 2, 2);
+                }
+                
+                .closebtn {
+                    margin-left: 15px;
+                    color: rgb(0, 0, 0);
+                    font-weight: bold;
+                    float: right;
+                    font-size: 22px;
+                    line-height: 20px;
+                    cursor: pointer;
+                    transition: 1.5s;
+                }
+                
+                .closebtn:hover {
+                    color: black;
+                }
+            </style>
+            <div class="alert">
+                {% for message in messages %}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> {% if message.tags %} {{ message }} {% endif %} {% endfor %}
+            </div>
+            {% endif %}
         </div>
     </div>
     <!-- Header Top Area End Here -->
@@ -140,7 +189,7 @@
                                         <li><a href="# ">Women</a>
                                             <ul>
                                                 {% for category in categories %}
-                                                <li><a href="{% url 'category' category.id %} ">{{category.name}}</a></li>
+                                                <li><a href="{% url 'category' category.id %} ">{{category.title}}</a></li>
                                                 {%endfor%}
                                             </ul>
                                         </li>

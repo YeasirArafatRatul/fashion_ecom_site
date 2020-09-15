@@ -11,15 +11,17 @@ from store.models import Product, Category
 class ContactData(ListView):
     model = Setting
     template_name = 'contactus.html'
+    context_object_name = 'setting'
 
 
 class About(ListView):
     model = Setting
     template_name = 'about.html'
+    context_object_name = 'setting'
 
 
 def Home(request):
-    setting = Setting.objects.get(id=1)
+    setting = Setting.objects.get(status=True)
     sliding = Slider.objects.all
     latest_products = Product.objects.all().order_by('-id')[:8]
     categories = Category.objects.all()

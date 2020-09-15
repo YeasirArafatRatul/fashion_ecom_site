@@ -10,18 +10,17 @@ from django.dispatch import receiver
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, full_name, id_card_number, department, designation=None, phone=None,  batch=None, class_id=None,
-                    password=None, is_active=True, is_staff=False, is_admin=False):
+    def create_user(self, username, phone, email, password=None, is_active=True, is_staff=False, is_admin=False):
         # all the required fields must be passed as arguments
         if not email:
             raise ValueError("Put an email address")
         if not password:
             raise ValueError("Input a password")
-        if not full_name:
-            raise ValueError("You must add your fullname")
+        if not username:
+            raise ValueError("You must add your username")
         user = self.model(
             email=self.normalize_email(email),
-            full_name=full_name,
+            username=username,
         )
         user.phone = phone
         user.set_password(password)
@@ -34,28 +33,23 @@ class UserManager(BaseUserManager):
 
         # user = user_object
 
-    def create_staffuser(self, email, full_name, department, designation=None, phone=None, id_card_number=None, batch=None, class_id=None,
-                         password=None):
+    def create_staffuser(self, username, phone, email, password=None):
         user = self.create_user(
             email,
-            full_name=full_name,
-            password=password,
+            username=username,
+            email=email,
             phone=phone,
-            designation=designation,
+            password=password,
 
             is_staff=True
         )
         return user
 
-    def create_superuser(self, email, full_name, department, id_card_number, designation=None,  phone=None,
-                         batch=None, class_id=None,
-                         password=None):
+    def create_superuser(self, username, phone, email, password=None):
         user = self.create_user(
-            email,
-            full_name=full_name,
+            username=username,
+            email=email,
             phone=phone,
-            id_card_number=id_card_number,
-            department=department,
             password=password,
 
             is_staff=True,
@@ -76,7 +70,7 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'username'
 
     # username & password is required by django default
-    REQUIRED_FIELDS = ['phone']
+    REQUIRED_FIELDS = ['phone', 'email']
 
     objects = UserManager()
 

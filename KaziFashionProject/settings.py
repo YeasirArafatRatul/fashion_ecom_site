@@ -26,8 +26,8 @@ SECRET_KEY = 't4upd&s6i=wo)d=o7w-jd1+^ssb36tnq)-xpu8ww$ndf28h747'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
+# changes the built_in userModel to Custom user model
+AUTH_USER_MODEL = 'accounts.User'
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,9 +43,9 @@ INSTALLED_APPS = [
 
     'accounts',
     'store',
-    # 'contact',
     'blog',
     'SiteSettings',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +148,4 @@ MEDIA_ROOT = MEDIA_DIR
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

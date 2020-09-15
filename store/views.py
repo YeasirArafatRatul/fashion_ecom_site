@@ -4,7 +4,14 @@ from .models import Product, Category
 from SiteSettings.models import Setting, Slider
 from .forms import SearchForm
 from django.db.models import Q
+
 # Create your views here.
+
+
+class DetailsView(DetailView):
+    model = Product
+    template_name = 'product_detail.html'
+    context_object_name = 'products'
 
 
 def category_products(request, id):
