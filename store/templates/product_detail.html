@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %}
+{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %}
 <!-- title -->
 {% block title %} {{setting.siteTitle}} {% endblock %}
 <!-- MainBody -->
@@ -56,13 +56,15 @@
                         <div class="product-variants">
                         </div>
                         <div class="single-add-to-cart">
-                            <form action="order/addtoshopcart/{{product.id}}" class="cart-quantity" method="POST">
+                            <form action="/order/addtoshopcart/{{product.id}}" class="cart-quantity" method="POST">
+
                                 <div class="quantity">
-                                    <label>Quantity</label>
+                                    <label>Quantity</label> {% csrf_token %} {{ form|crispy }}
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" value="1" type="number" min='1'>
+                                        <input class="input" name="quantity" value="1" type="number" min='1'>
                                         <!-- <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                         <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div> -->
+
                                     </div>
                                 </div>
                                 <button class="add-to-cart" type="submit">Add to cart</button>

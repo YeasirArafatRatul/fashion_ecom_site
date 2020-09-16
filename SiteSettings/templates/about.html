@@ -1,6 +1,6 @@
  {% extends 'base.html' %} {% load static %}
 <!-- title -->
-{% block title %} {{setting.siteTitle}} {% endblock %}
+{% block title %} {% if setting.siteTitle %} {{setting.siteTitle}} {% else %} Kazi Fashiion - About {% endif %} {% endblock %}
 <!-- Mainbody -->
 {% block mainbody %}
 <!-- about wrapper start -->
@@ -11,23 +11,25 @@
             <div class="col-lg-6 order-last order-lg-first">
                 <div class="about-text-wrap">
                     <h2><span>Provide Best</span>Product For You</h2>
-                    {% for data in object_list %}
+                    {% if setting.siteAbout %}
                     <div class="single-contact-block">
-                        <p>{{data.siteAbout}}</p>
+                        <p>{{setting.siteAbout}}</p>
                     </div>
-                    {% empty %}
-                    <p>About Is Not Updated Yet</p>> {% endfor %}
+                    {% else %}
+                    <p>About Is Not Updated Yet</p>
+                    {% endif %}
+
                 </div>
             </div>
             <!-- About Text End -->
             <!-- About Image Start -->
             <div class="col-lg-5 col-md-10">
-                <!-- {% for data in object_list %} -->
+                {% if setting.siteLogo %}
                 <div class="about-image-wrap">
-                    <img class="img-full" src="{{ data.siteLogo.url }}" alt="SiteLogo" />
+                    <img class="img-full" src="{{ setting.siteLogo.url }}" alt="SiteLogo" />
                 </div>
-                <!-- {% empty %}
-                <p>Image Is Not Updated Yet</p>> {% endfor %} -->
+                {% else %}
+                <p>Image Is Not Updated Yet</p>> {% endif %}
 
             </div>
             <!-- About Image End -->

@@ -3,21 +3,29 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
 from .models import Setting, Slider
-from django.views.generic.list import ListView
+from django.views.generic.base import TemplateView
 from store.models import Product, Category
 # Create your views here.
 
 
-class ContactData(ListView):
-    model = Setting
+class ContactData(TemplateView):
     template_name = 'contactus.html'
-    context_object_name = 'setting'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = Setting.objects.get(status=True)
+        context['categories'] = Category.objects.all()
+        return context
 
 
-class About(ListView):
-    model = Setting
+class About(TemplateView):
     template_name = 'about.html'
-    context_object_name = 'setting'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['setting'] = Setting.objects.get(status=True)
+        context['categories'] = Category.objects.all()
+        return context
 
 
 def Home(request):

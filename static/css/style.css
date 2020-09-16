@@ -1493,12 +1493,14 @@ textarea:focus {
 .cart-plus-minus .dec.qtybutton {
     bottom: 0;
     right: 0;
+    display: none;
 }
 
 .cart-plus-minus .inc.qtybutton {
     border-bottom: none;
     top: 0;
     right: 0;
+    display: none;
 }
 
 .product-details-thumbs .slick-arrow,
@@ -5043,7 +5045,7 @@ thead {
 }
 
 .table-content table td .cart-plus-minus {
-    float: none;
+    float: left;
     margin: 0 auto;
 }
 
