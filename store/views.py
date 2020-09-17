@@ -23,6 +23,7 @@ class DetailsView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['setting'] = Setting.objects.get(status=True)
+        context['categories'] = Category.objects.all()
         return context
 
 

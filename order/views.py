@@ -43,12 +43,12 @@ def addtoshopcart(request, id):
                 data.quantity = form.cleaned_data['quantity']
                 data.save()
         messages.success(request, "Product Added to Cart")
-
+        print(url)
         return HttpResponseRedirect(url)
 # from home page
     else:  # if there is no post
         if control == 1:
-            data = ShopCart.objects.get(product_id=id)
+            data = ShopCart.objects.get(product_id=id, user_id=current_user.id)
             data.quantity += 1
             data.save()
         else:
@@ -58,6 +58,7 @@ def addtoshopcart(request, id):
             data.quantity = 1
             data.save()
         messages.success(request, "Product Added To Cart")
+        print(url)
     return HttpResponseRedirect(url)
 
 
