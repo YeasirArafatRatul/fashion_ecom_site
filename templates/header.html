@@ -117,11 +117,14 @@
                             <!-- Header Middle Wishlist Area End Here -->
                             <!-- Begin Header Mini Cart Area -->
                             <li class="hm-minicart ">
-                                <div class="hm-minicart-trigger ">
-                                    <span class="item-icon "></span>
-                                    <span class="item-text ">Cart
-                                    <span class="cart-item-count ">2</span>
-                                    </span>
+                                <div class="hm-minicart-trig">
+                                    <a href="{% url 'checkout' %}">
+
+                                        <span class="item-icon "></span>
+                                        <span class="item-text ">Cart
+                                    <span class="cart-item-count" id="cart">0</span>
+                                        </span>
+                                    </a>
                                 </div>
                                 <!-- 
                                 <div class="minicart ">

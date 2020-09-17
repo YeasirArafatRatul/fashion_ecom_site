@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 
+from SiteSettings.models import Setting
 from accounts.models import User
 from store.models import Product, Category
 from .models import ShopCart, ShopCartForm
@@ -55,20 +56,35 @@ def addtoshopcart(request, id):
             data.user_id = current_user.id
             data.product_id = id
             data.quantity = 1
+            data.save()
         messages.success(request, "Product Added To Cart")
     return HttpResponseRedirect(url)
 
 
-def shopcart(request):
+def checkout(request):
     category = Category.objects.all()
     current_user = request.user  # Access User Session information
     shopcart = ShopCart.objects.filter(user_id=current_user.id)
-    total = 0
+    setting = Setting.objects.get(status=True)
+    subtotal = 0
     for p in shopcart:
-        total += p.product.price * p.quantity
+        subtotal += p.product.new_price * p.quantity
+
+    delivery_charge = 50
+    total = subtotal + delivery_charge
     # return HttpResponse(str(total))
     context = {'shopcart': shopcart,
                'category': category,
+               'setting': setting,
+               'sub_total': subtotal,
+               'delivery_charge': delivery_charge,
                'total': total,
                }
-    return render(request, 'shopcart_products.html', context)
+    return render(request, 'checkout.html', context)
+
+
+def deletefromcart(request, id):
+    url = request.META.get("HTTP_REFERER")  # get last url
+    ShopCart.objects.filter(id=id).delete()
+    # messages.success(request, "Your item deleted form Shopcart.")
+    return HttpResponseRedirect(url)
