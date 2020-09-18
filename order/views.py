@@ -10,8 +10,6 @@ from .models import ShopCart, ShopCartForm
 # Create your views here.
 
 
-def order(request):
-    return HttpResponse("Order Page")
 
 
 @login_required(login_url='/login')  # Check login
@@ -89,3 +87,9 @@ def deletefromcart(request, id):
     ShopCart.objects.filter(id=id).delete()
     # messages.success(request, "Your item deleted form Shopcart.")
     return HttpResponseRedirect(url)
+
+
+def placeorder(request):
+   
+
+    return HttpResponse('hello')
