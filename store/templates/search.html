@@ -43,9 +43,9 @@
                             <div class="shop-add-action mb-xs-30">
                                 <ul class="add-actions-link">
                                     <li class="add-cart cart">
-                                        <a href="order/addtoshopcart/{{product.id}}">Add to cart</a>
+                                        <a href="{% url 'addtoshopcart' product.id %}">Add to cart</a>
                                     </li>
-                                    <!-- <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li> -->
+                                    <!-- <li class="wishlist"der/addtoshopcart/{{product.id}><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li> -->
                                     <li><a class="quick-view" href="{% url 'detail' product.id %}"><i class="fa fa-eye"></i>Quick view</a></li>
                                 </ul>
                             </div>

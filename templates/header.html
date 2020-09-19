@@ -99,7 +99,7 @@
                 <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
                     <!-- Begin Header Middle Searchbox Area -->
                     <form action="{% url 'search' %}" method="GET" class="hm-searchbox">
-                        {% csrf_token %}
+
                         <input type="text" name="search_term" value="{{search_term}}" placeholder=" Enter your search key ... ">
                         <button class="li-btn " type="submit "><i class="fa fa-search "></i></button>
                     </form>

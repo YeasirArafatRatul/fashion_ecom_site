@@ -2386,6 +2386,11 @@ textarea:focus {
 }
 
 
+/* OWL Stage  Outer */
+
+.owl-stage-outer {}
+
+
 /*Sticky*/
 
 .header-sticky.sticky {
@@ -2667,12 +2672,14 @@ textarea:focus {
     position: relative;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 300ms ease-in 0s;
+    /* max-height: 20rem; */
 }
 
 .single-product-wrap:hover {
     margin: 0 0 -75px;
     padding: 0 0 75px;
     z-index: 9;
+    /* height: 25rem; */
 }
 
 .single-product-wrap.mt-40:hover {
@@ -2704,7 +2711,7 @@ textarea:focus {
 }
 
 .product-image>a {
-    display: block;
+    display: flex;
     position: relative;
 }
 
@@ -2714,7 +2721,7 @@ textarea:focus {
 }
 
 .product-image>span.sticker {
-    background: #0363cd;
+    background: #f32d00;
     border-radius: 100%;
     color: #fff;
     right: 15px;
@@ -2729,9 +2736,13 @@ textarea:focus {
     font-size: 11px;
 }
 
+
+/* 
 .product-review {
     border-bottom: 1px solid #ebebeb;
 }
+
+
 
 .manufacturer {
     font-size: 13px;
@@ -2776,7 +2787,7 @@ textarea:focus {
 
 .rating li.no-star i {
     color: #e3e3e3;
-}
+} */
 
 .product_desc {
     margin: 15px 0 0;
@@ -4740,7 +4751,7 @@ thead {
     text-transform: uppercase;
     vertical-align: middle;
     white-space: nowrap;
-    width: 250px;
+    width: 40rem;
 }
 
 .your-order-table table th,

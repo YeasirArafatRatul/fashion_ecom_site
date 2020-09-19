@@ -8,101 +8,8 @@
 <!--Checkout Area Start-->
 <div class="checkout-area pt-60 pb-30">
     <div class="container">
-
         <div class="row">
-            <div class="col-lg-6 col-12">
-                <form action="#">
-                    <div class="checkbox-form">
-                        <h3>Billing Details</h3>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!-- <div class="country-select clearfix">
-                                    <label>Country <span class="required">*</span></label>
-                                    <select class="nice-select wide">
-                                      <option data-display="Bangladesh">Bangladesh</option>
-                                      <option value="uk">London</option>
-                                      <option value="rou">Romania</option>
-                                      <option value="fr">French</option>
-                                      <option value="de">Germany</option>
-                                      <option value="aus">Australia</option>
-                                    </select>
-                                </div> -->
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>First Name <span class="required">*</span></label>
-                                    <input placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Last Name <span class="required">*</span></label>
-                                    <input placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Company Name</label>
-                                    <input placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Address <span class="required">*</span></label>
-                                    <input placeholder="Street address" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Town / City <span class="required">*</span></label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>State / County <span class="required">*</span></label>
-                                    <input placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Postcode / Zip <span class="required">*</span></label>
-                                    <input placeholder="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Email Address <span class="required">*</span></label>
-                                    <input placeholder="" type="email">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Phone  <span class="required">*</span></label>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <!-- <div class="col-md-12">
-                                <div class="checkout-form-list create-acc">
-                                    <input id="cbox" type="checkbox">
-                                    <label>Create an account?</label>
-                                </div>
-                                <div id="cbox-info" class="checkout-form-list create-account">
-                                    <p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
-                                    <label>Account password  <span class="required">*</span></label>
-                                    <input placeholder="password" type="password">
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-lg-6 col-12">
+            <div class="col-lg-12 col-12">
                 <div class="your-order">
                     <h3>Your order</h3>
                     <div class="your-order-table table-responsive">
@@ -110,13 +17,15 @@
                             <thead>
                                 <tr>
                                     <th class="cart-product-name">Product</th>
+                                    <th class="cart-product-name">quantity</th>
                                     <th class="cart-product-total">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for product in shopcart %}
                                 <tr class="cart_item">
-                                    <td class="cart-product-name">{{product.product.name}}<strong class="product-quantity"> × {{product.quantity}}</strong></td>
+                                    <td class="cart-product-name">{{product.product.name}}</td>
+                                    <td class="product-quantity">{{product.quantity}}</td>
                                     <td class="cart-product-total"><span class="amount">&#2547;{{product.total}}</span></td>
                                     <td class="cart-product-total"><span class="amount"><a href="/order/deletefromcart/{{ product.id }}" class="main-btn icon-btn"><i class="fa fa-close"></i></a></span></td>
                                 </tr>
@@ -125,74 +34,28 @@
                             <tfoot>
                                 <tr class="cart-subtotal">
                                     <th>Cart Subtotal</th>
+                                    <td></td>
                                     <td><span class="amount">&#2547;{{sub_total}}</span></td>
                                 </tr>
                                 <tr class="cart-subtotal">
                                     <th>Delivery Charge</th>
+                                    <td></td>
                                     <td><span class="amount">&#2547;{{delivery_charge}}</span></td>
                                 </tr>
                                 <tr class="order-total">
-                                    <th>Order Total</th>
 
+                                    <th>Order Total</th>
+                                    <td></td>
                                     <td><strong><span class="amount">&#2547;{{total}}</span></strong></td>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
-                    <div class="payment-method">
-                        <div class="payment-accordion">
-                            <div id="accordion">
-                                <!-- <div class="card">
-                                    <div class="card-header" id="#payment-1">
-                                        <h5 class="panel-title">
-                                            <a class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                      Direct Bank Transfer.
-                                    </a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <div class="card">
-                                    <div class="card-header" id="#payment-2">
-                                        <h5 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                      Cash On Delivery
-                                    </a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse show" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <p>Cash On Delivery Is Available inside Dhaka City Only</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="#payment-3">
-                                        <h5 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                      bKash
-                                    </a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <p>Pay To Our bKash Marchant Number and give your Information</p>
-                                            <p>Our Marchant Number: <strong class="bKash-number"> 01700 000000</strong></p>
-                                            <input type="text" placeholder="Your bKash No">
-                                            <input type="text" placeholder="bKash TrxId">
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="order-button-payment">
-                                <input value="Place order" type="submit">
-                            </div>
-                        </div>
+                    <div class="order-button-payment">
+                        <a href="{% url 'placeorder' %}">
+                            <input value="Nest Step" type="submit">
+                        </a>
                     </div>
                 </div>
             </div>
