@@ -12,8 +12,6 @@ from accounts.models import UserProfile
 # Create your views here.
 
 
-def order(request):
-    return HttpResponse("Order Page")
 
 
 @login_required(login_url='/login')  # Check login
@@ -112,6 +110,7 @@ def deletefromcart(request, id):
     return HttpResponseRedirect(url)
 
 
+<<<<<<< HEAD
 # ORDER
 def placeorder(request):
     category = Category.objects.all()
@@ -179,3 +178,9 @@ def placeorder(request):
                'profile': profile,
                }
     return render(request, 'Order_Form.html', context)
+=======
+def placeorder(request):
+   
+
+    return HttpResponse('hello')
+>>>>>>> 31892c8a57e4ad520a6bfbc299dde558b1d16099

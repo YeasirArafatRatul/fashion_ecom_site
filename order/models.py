@@ -64,14 +64,22 @@ class Order(models.Model):
 
     @property
     def full_name(self):
+<<<<<<< HEAD
         return str(self.first_name) + " " + str(self.last_name)
+=======
+        return str(first_name) + str(last_name)
+>>>>>>> 31892c8a57e4ad520a6bfbc299dde558b1d16099
 
 
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ['first_name', 'last_name',
+<<<<<<< HEAD
                   'phone', 'address', 'city', 'payment_system']
+=======
+                  'phone', 'address', 'city']
+>>>>>>> 31892c8a57e4ad520a6bfbc299dde558b1d16099
 
 
 class OrderProduct(models.Model):
@@ -91,4 +99,8 @@ class OrderProduct(models.Model):
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
+<<<<<<< HEAD
         return self.product.name
+=======
+        return self.product.title
+>>>>>>> 31892c8a57e4ad520a6bfbc299dde558b1d16099
