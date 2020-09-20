@@ -1,6 +1,21 @@
 {%extends 'base.html' %} {% load static %} {% load crispy_forms_filters %}
 <!-- title -->
-{% block title %} Login {{setting.siteTitle}} {% endblock %} {% block mainbody %}
+{% block title %} Register-{{setting.siteTitle}} {% endblock %}
+
+<!-- block body -->
+{% block mainbody %} {% if user.is_authenticated %}
+
+
+<div class="page-section mb-60">
+    <div class="container">
+        <div class="row" style="align-content: center;">
+            <h3 style="color:rgb(214, 0, 0);margin-left: 2rem; margin-right: auto;">You're already logged in an account.</h3>
+        </div>
+    </div>
+</div>
+
+
+{% else %}
 <!-- Begin Login Content Area -->
 <div class="page-section mb-60">
     <div class="container">
@@ -18,8 +33,10 @@
 
                 </form>
             </div>
+            <p>Already Have An Account? <a href="{% url 'register' %}">Sign Up</a></p>
         </div>
     </div>
 </div>
 <!-- Login Content Area End Here -->
-{% endblock %}
+
+{% endif %} {% endblock %}

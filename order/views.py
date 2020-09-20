@@ -12,8 +12,9 @@ from .models import ShopCart, ShopCartForm, OrderForm, OrderProduct, Order
 from accounts.models import UserProfile
 # Create your views here.
 
+# Check login
 
-@login_required(login_url='/login')  # Check login
+
 def addtoshopcart(request, id):
     url = request.META.get("HTTP_REFERER")  # get last url
     current_user = request.user  # access user session info
@@ -74,6 +75,7 @@ def addtoshopcart(request, id):
         pass
 
 
+@login_required(login_url='login')
 def checkout(request):
     category = Category.objects.all()
     setting = Setting.objects.get(status=True)
@@ -102,6 +104,7 @@ def checkout(request):
     return render(request, 'checkout.html', context)
 
 
+@login_required(login_url='login')
 def deletefromcart(request, id):
     url = request.META.get("HTTP_REFERER")  # get last url
     ShopCart.objects.filter(id=id).delete()
@@ -111,6 +114,7 @@ def deletefromcart(request, id):
 
 # ORDER
 
+@login_required(login_url='login')
 def placeorder(request):
     category = Category.objects.all()
     setting = Setting.objects.get(status=True)
