@@ -1,5 +1,8 @@
 from django import forms
 from .models import User, UserProfile
+from django.contrib.auth.forms import UserChangeForm
+from django.forms import TextInput, EmailInput, Select, FileInput
+
 #from django.contrib.auth import get_user_model
 
 #User = get_user_model()
@@ -32,3 +35,23 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class UserUpdateForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'phone')
+        widgets = {
+            'username': TextInput(attrs={'class': 'input', 'placeholder': 'username'}),
+            'email': EmailInput(attrs={'class': 'input', 'placeholder': 'email'}),
+            'phone': TextInput(attrs={'class': 'input', 'placeholder': 'phone'}),
+        }
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('image',)
+        widgets = {
+            'image': FileInput(attrs={'class': 'input', 'placeholder': 'image', }),
+        }

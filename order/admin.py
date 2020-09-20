@@ -1,8 +1,5 @@
 from django.contrib import admin
-<<<<<<< HEAD
 from .models import ShopCart
-=======
->>>>>>> 31892c8a57e4ad520a6bfbc299dde558b1d16099
 from .models import ShopCart, Order, OrderProduct
 
 
@@ -20,12 +17,8 @@ class OrderProductInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
-<<<<<<< HEAD
     list_display = ['code', 'user', 'full_name',
                     'phone', 'city', 'total', 'status']
-=======
-    list_display = ['user', 'full_name', 'phone', 'city', 'total', 'status']
->>>>>>> 31892c8a57e4ad520a6bfbc299dde558b1d16099
     list_filter = ['status']
     readonly_fields = ('user', 'first_name', 'last_name',
                        'address', 'city', 'phone', 'total')
@@ -42,7 +35,3 @@ class OrderProductAdmin(admin.ModelAdmin):
 admin.site.register(ShopCart, ShopCartAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderProduct, OrderProductAdmin)
-<<<<<<< HEAD
-=======
-
->>>>>>> 31892c8a57e4ad520a6bfbc299dde558b1d16099

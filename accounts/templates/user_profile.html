@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% load static %}
+<!-- title -->
+{% block title %} {{profile.user.username}}-Profile {% endblock %}
+
+<!-- MainBody -->
+{% block mainbody %}
+
+<!-- profile wrapper start -->
+<div class="contact-main-page mt-60 mb-40 mb-md-40 mb-sm-40 mb-xs-40">
+    <div class="about-us-wrapper pt-60 pb-40">
+        <div class="container">
+            <div class="row">
+                <!-- About Text Start -->
+                <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                    <div class="login-form">
+                        <h4 class="login-title">{{profile.user.username}} Profile</h4>
+                        <div class="row">
+                            <div class="col-md-6 col-12 mb-20">
+                                <label><strong>First Name</strong></label>
+                                <label>{{profile.user.username}}</label>
+                                <!-- <input class="mb-0" type="text" placeholder="First Name"> -->
+                            </div>
+                            <div class="col-md-6 col-12 mb-20">
+                                <label><strong>Email </strong></label>
+                                <label>{{profile.user.email}}</label>
+                                <!-- <input class="mb-0" type="text" placeholder="Last Name"> -->
+                            </div>
+                            <div class="col-md-12 mb-20">
+                                <label><strong>Phone</strong></label>
+                                <label>{{profile.user.phone}}</label>
+                                <!-- <input class="mb-0" type="email" placeholder="Email Address"> -->
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <!-- <label>Password</label> -->
+                                <!-- <input class="mb-0" type="password" placeholder="Password"> -->
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <!-- <label>Confirm Password</label> -->
+                                <!-- <input class="mb-0" type="password" placeholder="Confirm Password"> -->
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <a class="register-button mt-0" style="width:9rem; padding-left: 3rem;" href="{% url 'update' %}">Update</a>
+                            </div>
+                            <div class="">
+                                <a class="register-button mt-0" style="width:12rem; padding-left: 2rem;" href="{% url 'password' %}">Change Password</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- profile Text End -->
+                <!-- profile Image Start -->
+                <div class=" col-sm-12 col-md-12 col-lg-6 col-xs-12 ">
+                    {% if profile.image %}
+                    <div class="about-image-wrap ">
+                        <img class="img-full " src="{{ profile.image.url }} " alt="Profile Picture " style="margin-left:7rem; border: 3px solid #343a40; border-radius: 15%; height: 15rem; width: 15rem; background-color: aliceblue; " />
+                    </div>
+                    {% else %}
+                    <p>Profile Image Is Not Updated Yet</p>> {% endif %}
+
+                </div>
+                <!-- About Image End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- profile wrapper end -->
+{% endblock %}

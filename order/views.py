@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.utils.crypto import get_random_string
+from django.urls import reverse
 
 from SiteSettings.models import Setting
 from accounts.models import User
@@ -10,8 +11,6 @@ from store.models import Product, Category
 from .models import ShopCart, ShopCartForm, OrderForm, OrderProduct, Order
 from accounts.models import UserProfile
 # Create your views here.
-
-
 
 
 @login_required(login_url='/login')  # Check login
@@ -110,8 +109,8 @@ def deletefromcart(request, id):
     return HttpResponseRedirect(url)
 
 
-<<<<<<< HEAD
 # ORDER
+
 def placeorder(request):
     category = Category.objects.all()
     setting = Setting.objects.get(status=True)
@@ -155,19 +154,20 @@ def placeorder(request):
                 detail.product_id = rs.product_id
                 detail.user_id = current_user.id
                 detail.quantity = rs.quantity
-                detail.price = subtotal
+                detail.price = rs.product.new_price
                 # detail.variant_id = rs.variant_id
-                detail.amount = total
+                detail.amount = rs.product.new_price * rs.quantity
                 detail.save()
 
             ShopCart.objects.filter(user_id=current_user.id).delete()
             request.session['cart_items'] = 0
             messages.success(
-                request, "Your Order has been completed. Thank you ")
-            return render(request, 'Order_Completed.html', {'ordercode': ordercode, 'category': category})
+                request, "Your Order has been placed. Thank you.")
+            url = reverse('home')
+            return HttpResponseRedirect(url)
         else:
             messages.warning(request, form.errors)
-            return HttpResponseRedirect("placeorder")
+            return HttpResponseRedirect("home")
 
     form = OrderForm()
     context = {'shopcart': shopcart,
@@ -177,10 +177,4 @@ def placeorder(request):
                'form': form,
                'profile': profile,
                }
-    return render(request, 'Order_Form.html', context)
-=======
-def placeorder(request):
-   
-
-    return HttpResponse('hello')
->>>>>>> 31892c8a57e4ad520a6bfbc299dde558b1d16099
+    return render(request, 'order_Form.html', context)

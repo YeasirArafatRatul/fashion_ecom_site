@@ -1,6 +1,6 @@
 from django.urls import path
 from django.conf import settings
-from .views import SignUpView, CustomLogoutView, CustomLoginView
+from .views import SignUpView, CustomLogoutView, CustomLoginView, profile, user_update, password_change
 from django.contrib.auth import views as auth_views
 
 
@@ -15,5 +15,8 @@ urlpatterns = [
     #     path('login/', CustomLoginView.as_view(),
     #          {'next_page': settings.LOGIN_REDIRECT_URL}, name='login'),
     path('logout/', CustomLogoutView.as_view(),
-         {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout')
+         {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
+    path('profile/', profile, name='profile'),
+    path('update/', user_update, name='update'),
+    path('password/', password_change, name='password'),
 ]
