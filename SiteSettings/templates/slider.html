@@ -8,16 +8,16 @@
                 <div class="slider-area">
                     <div class="slider-active owl-carousel">
                         <!-- Begin Single Slide Area -->
-                        {% for image in sliding %}
+                        {% for slide in sliding %}
                         <div class="single-slide align-center-left  animation-style bg">
-                            <img id='slideimage' src='{{image.image.url}}' alt='slider image '>
+                            <img id='slideimage' src='{{slide.image.url}}' alt='slider image '>
                             <!-- <div class="slider-progress"></div> -->
                             <div class="slider-content">
-                                <h5>Sale Offer <span>-20% Off</span> This Week</h5>
-                                <h2>Chamcham Galaxy S9 | S9+</h2>
-                                <h3>Starting at <span>$1209.00</span></h3>
+                                <!-- <h5>Sale Offer <span>-20% Off</span> This Week</h5> -->
+                                <h2>{{slide.title}}</h2>
+                                <h3>{{slide.subtitle}}</h3>
                                 <div class="default-btn slide-btn">
-                                    <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
+                                    <a class="links" href="#">Shop Now</a>
                                 </div>
                             </div>
                         </div>

@@ -7,7 +7,7 @@ class AdminContact(admin.ModelAdmin):
 
 
 class AdminSlider(admin.ModelAdmin):
-    list_display = ['id', 'status']
+    list_display = ['title', 'image_tag', 'status']
 
 
 # Register your models here.

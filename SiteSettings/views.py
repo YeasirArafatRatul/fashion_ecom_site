@@ -32,12 +32,14 @@ def Home(request):
     setting = Setting.objects.get(status=True)
     sliding = Slider.objects.all
     latest_products = Product.objects.all().order_by('-id')[:8]
+    products_picked = Product.objects.all().order_by('?')[:4]
     categories = Category.objects.all()
     context = {
         'setting': setting,
         'sliding': sliding,
         'latest': latest_products,
         'categories': categories,
+        'random': products_picked,
 
     }
     return render(request, 'home.html', context)

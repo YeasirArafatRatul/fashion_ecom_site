@@ -17,7 +17,8 @@
                             <thead>
                                 <tr>
                                     <th class="cart-product-name">Product</th>
-                                    <th class="cart-product-name">quantity</th>
+                                    <!-- <th class="cart-product-name">Price</th> -->
+                                    <th class="cart-product-name">qty</th>
                                     <th class="cart-product-total">Total</th>
                                 </tr>
                             </thead>
@@ -25,6 +26,7 @@
                                 {% for product in shopcart %}
                                 <tr class="cart_item">
                                     <td class="cart-product-name">{{product.product.name}}</td>
+                                    <!-- <td class="cart-product-name">{{product.product.new_price}}</td> -->
                                     <td class="product-quantity">{{product.quantity}}</td>
                                     <td class="cart-product-total"><span class="amount">&#2547;{{product.total}}</span></td>
                                     <td class="cart-product-total"><span class="amount"><a href="/order/deletefromcart/{{ product.id }}" class="main-btn icon-btn"><i class="fa fa-close"></i></a></span></td>
@@ -35,17 +37,20 @@
                                 <tr class="cart-subtotal">
                                     <th>Cart Subtotal</th>
                                     <td></td>
+                                    <!-- <td></td> -->
                                     <td><span class="amount">&#2547;{{sub_total}}</span></td>
                                 </tr>
                                 <tr class="cart-subtotal">
                                     <th>Delivery Charge</th>
                                     <td></td>
+                                    <!-- <td></td> -->
                                     <td><span class="amount">&#2547;{{delivery_charge}}</span></td>
                                 </tr>
                                 <tr class="order-total">
 
                                     <th>Order Total</th>
                                     <td></td>
+                                    <!-- <td></td> -->
                                     <td><strong><span class="amount">&#2547;{{total}}</span></strong></td>
                                 </tr>
                             </tfoot>

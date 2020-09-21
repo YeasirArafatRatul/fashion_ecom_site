@@ -115,8 +115,10 @@
                                     <a href="{% url 'checkout' %}">
 
                                         <span class="item-icon "></span>
+                                        <!-- cart tags -->
+                                        {% load my_cart_tags %} {% shopcartcount user.id as count %}
                                         <span class="item-text ">Cart
-                                    <span class="cart-item-count" id="cart">0</span>
+                                    <span class="cart-item-count" id="cart">{{count}}</span>
                                         </span>
                                     </a>
                                 </div>
