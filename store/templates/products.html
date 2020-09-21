@@ -29,6 +29,7 @@
                     <div class="product-body" style="text-align: center;">
                         <h4><a class="product_name" href="{% url 'detail' rs.id %}">{{ rs.name }}</a></h4>
                         <h2 class="new-price"><a href="#">{{ rs.new_price }}&#2547;</a></h2>
+                        <p class="product-old-price"><s>{{ rs.old_price }}&#2547;</s></p>
                         <p class=""><a href="#">Color: {{ rs.color }}</a></p>
                         <div class="product-btns" style="align-content: center;">
                             <ul class="add-actions-link">
@@ -51,7 +52,7 @@
             <!-- section title -->
             <div class="col-md-12">
                 <div class="section-title">
-                    <h2 class="title">New Arrival</h2>
+                    <h2 class="title">Saree</h2>
                 </div>
             </div>
             <!-- section title -->
@@ -69,6 +70,7 @@
                     <div class="product-body" style="text-align: center;">
                         <h4><a class="product_name" href="{% url 'detail' rs.id %}">{{ rs.name }}</a></h4>
                         <h2 class="new-price"><a href="#">{{ rs.new_price }}&#2547;</a></h2>
+                        <h1 class="product-old-price"><a href="#">{{ rs.old_price }}&#2547;</a></h1>
                         <p class=""><a href="#">Color: {{ rs.color }}</a></p>
                         <div class="product-btns" style="align-content: center;">
                             <ul class="add-actions-link">
