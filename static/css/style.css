@@ -2912,13 +2912,19 @@ textarea:focus {
     width: 100%;
 }
 
+.add-actions-link {
+    margin-top: 2px;
+    padding-top: 2px;
+    margin: auto;
+    width: 50%;
+}
+
 .add-actions-link li {
     line-height: 1;
     margin: 0 0 0 3px;
     background: #eef0f1;
     display: inline-block;
     border-radius: 4px;
-    float: left;
     height: 35px;
     line-height: 35px;
     width: 35px;
@@ -2930,14 +2936,13 @@ textarea:focus {
     background: #eef0f1;
     border: 1px solid #e1e1e1;
     transition: all 0.3s ease-in-out;
-    width: 120px;
+    width: 130px;
 }
 
 .add-actions-link li:hover {
-    background: #f0e54b;
-    ;
-    border-color: #f0e54b;
-    ;
+    background: #dae2ff;
+    border-color: #dae2ff;
+    border-radius: 4px;
 }
 
 .add-actions-link li a {

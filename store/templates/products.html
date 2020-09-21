@@ -24,16 +24,18 @@
                     <div class="product-thumb">
                         <a href="{% url 'detail' rs.id %}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                         <img src="{{ rs.image.url }}" alt="" style="height: 15rem"></a>
-
+                        <span class="sticker">New</span>
                     </div>
-                    <div class="product-body">
-
+                    <div class="product-body" style="text-align: center;">
                         <h4><a class="product_name" href="{% url 'detail' rs.id %}">{{ rs.name }}</a></h4>
                         <h2 class="new-price"><a href="#">{{ rs.new_price }}&#2547;</a></h2>
-                        <div class="product-btns">
-                            <a href="{% url 'addtoshopcart' rs.id %}" class="add-cart active"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                            <span></span>
-                            <a href="{% url 'detail' rs.id %}" class="primary-btn add-to-cart"><i class="fa fa-eye"></i> Detail</a>
+                        <p class=""><a href="#">Color: {{ rs.color }}</a></p>
+                        <div class="product-btns" style="align-content: center;">
+                            <ul class="add-actions-link">
+                                <li class="add-cart active cart"><a href="{% url 'addtoshopcart' rs.id %}">Add to cart</a></li>
+                                <span></span>
+                                <!-- <li><a href="{% url 'detail' rs.id%}" title="quick view" class="quick-view-btn"><i class="fa fa-eye"></i></a></li> -->
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -44,7 +46,6 @@
 
         </div>
         <!-- /row -->
-
         <!-- row -->
         <div class="row">
             <!-- section title -->
@@ -65,14 +66,16 @@
                         <img src="{{ rs.image.url }}" alt="" style="height: 15rem"></a>
 
                     </div>
-                    <div class="product-body">
-
+                    <div class="product-body" style="text-align: center;">
                         <h4><a class="product_name" href="{% url 'detail' rs.id %}">{{ rs.name }}</a></h4>
                         <h2 class="new-price"><a href="#">{{ rs.new_price }}&#2547;</a></h2>
-                        <div class="product-btns">
-                            <a href="{% url 'addtoshopcart' rs.id %}" class="add-cart active"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                            <span></span>
-                            <a href="{% url 'detail' rs.id %}" class="primary-btn add-to-cart"><i class="fa fa-eye"></i> Detail</a>
+                        <p class=""><a href="#">Color: {{ rs.color }}</a></p>
+                        <div class="product-btns" style="align-content: center;">
+                            <ul class="add-actions-link">
+                                <li class="add-cart active cart"><a href="{% url 'addtoshopcart' rs.id %}">Add to cart</a></li>
+                                <span></span>
+                                <!-- <li><a href="{% url 'detail' rs.id%}" title="quick view" class="quick-view-btn"><i class="fa fa-eye"></i></a></li> -->
+                            </ul>
                         </div>
                     </div>
                 </div>
