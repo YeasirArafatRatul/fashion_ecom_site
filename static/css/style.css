@@ -904,12 +904,16 @@ textarea:focus {
 
 .product-area .owl-carousel .owl-item {
     padding: 25px 0;
+    width: 30rem;
+    height: 30rem;
 }
 
 .product-area .owl-carousel .owl-stage-outer {
     margin: 0 0 -100px;
     padding: 0 0 85px;
     position: relative;
+    height: 30rem;
+    ;
 }
 
 
