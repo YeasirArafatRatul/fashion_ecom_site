@@ -39,6 +39,8 @@ class Order(models.Model):
     STATUS = (
         ('New', 'New'),
         ('Confirmed', 'Confirmed'),
+        ('Processing', 'Processing'),
+        ('Delivered', 'Delivered'),
         ('Canceled', 'Canceled'),
     )
     PAYMENT = (
@@ -55,7 +57,9 @@ class Order(models.Model):
     total = models.FloatField()
     status = models.CharField(max_length=30, choices=STATUS, default='New')
     payment_system = models.CharField(
-        max_length=30, choices=PAYMENT, default='New')
+        max_length=30, choices=PAYMENT)
+    trlxid = models.CharField(max_length=20, null=True, blank=True)
+    account_no = models.IntegerField(null=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
@@ -72,22 +76,17 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ['first_name', 'last_name',
-                  'phone', 'address', 'city', 'payment_system']
+                  'phone', 'address', 'city', 'payment_system', 'trlxid', 'account_no']
 
 
 class OrderProduct(models.Model):
-    STATUS = (
-        ('New', 'New'),
-        ('Accepted', 'Accepted'),
-        ('Canceled', 'Canceled'),
-    )
+
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     price = models.FloatField()
     amount = models.FloatField()
-    status = models.CharField(max_length=50, choices=STATUS, default='New')
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 

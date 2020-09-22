@@ -30,11 +30,13 @@ class About(TemplateView):
 
 def Home(request):
     setting = Setting.objects.get(status=True)
-    sliding = Slider.objects.all
+    sliding = Slider.objects.filter(status=True)
     latest_products = Product.objects.all().order_by('-id')[:8]
     first_category = Product.objects.filter(category=1)
-    second_category = Product.objects.filter(category=2)
+    # second_category = Product.objects.filter(category=2)
     # print(products_picked.id)
+    random = Product.objects.all().order_by(
+        '?')[:4]  # Random selected 4 products
     categories = Category.objects.all()
     context = {
         'setting': setting,
@@ -42,7 +44,23 @@ def Home(request):
         'latest': latest_products,
         'categories': categories,
         'first_category': first_category,
-        'second_category': second_category,
+        'random': random
 
     }
     return render(request, 'home.html', context)
+
+
+def allProducts(request):
+    setting = Setting.objects.get(status=True)
+    sliding = Slider.objects.filter(status=True)
+    random = Product.objects.all().order_by(
+        '?')[:28]  # Random selected 4 products
+    categories = Category.objects.all()
+    context = {
+        'setting': setting,
+        'sliding': sliding,
+        'categories': categories,
+        'all_products': random,
+
+    }
+    return render(request, 'all_products.html', context)

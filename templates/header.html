@@ -22,6 +22,8 @@
                             {% if user.is_authenticated %}
                             <li>
                                 <a href="{% url 'profile' %}">{{user.username}}</a></li>
+                            <li>
+                                <a href="{% url 'my-orders' %}">My Orders</a></li>
                             {% if user.is_admin %}
                             <li>
                                 <a href="{% url 'admin:index' %}">Admin Panel</a></li>
@@ -185,7 +187,7 @@
                                     <ul class="megamenu hb-megamenu ">
                                         <!-- <li><a href="# ">Saree</a></li>
                                         <li><a href="# ">Dresses</a></li> -->
-                                        <li><a href="# ">Women</a>
+                                        <li><a href="{% url 'all-products' %}">All Products</a>
                                             <ul>
                                                 {% for category in categories %}
                                                 <li><a href="{% url 'category' category.id %} ">{{category.title}}</a></li>

@@ -47,7 +47,7 @@ def addtoshopcart(request, id):
                     data.product = product
                     data.quantity = form.cleaned_data['quantity']
                     data.save()
-            messages.success(request, "Product Added to Cart")
+            # messages.success(request, "Product Added to Cart")
             return HttpResponseRedirect(url)
 
     # from home page
@@ -67,7 +67,7 @@ def addtoshopcart(request, id):
                 data.product_id = id
                 data.quantity = 1
                 data.save()
-            messages.success(request, "Product Added To Cart")
+            # messages.success(request, "Product Added To Cart")
 
         return HttpResponseRedirect(url)
     else:
@@ -145,6 +145,9 @@ def placeorder(request):
             data.address = form.cleaned_data['address']
             data.city = form.cleaned_data['city']
             data.phone = form.cleaned_data['phone']
+            data.payment_system = form.cleaned_data['payment_system']
+            data.trlxid = form.cleaned_data['trlxid']
+            data.account_no = form.cleaned_data['account_no']
             data.user_id = current_user.id
             data.total = total
 
@@ -182,3 +185,58 @@ def placeorder(request):
                'profile': profile,
                }
     return render(request, 'order_Form.html', context)
+
+
+@login_required(login_url='/login')  # Check login
+def user_orders(request):
+    category = Category.objects.all()
+    setting = Setting.objects.get(status=True)
+    current_user = request.user
+    orders = Order.objects.filter(user_id=current_user.id)
+    context = {
+        'categories': category,
+        'setting': setting,
+        'orders': orders,
+    }
+    return render(request, 'user_order.html', context)
+
+
+@login_required(login_url='/login')  # Check login
+def user_orderdetail(request, id):
+    #category = Category.objects.all()
+    current_user = request.user
+    order = Order.objects.get(user_id=current_user.id,
+                              id=id).order_by('create_at')
+    orderitems = OrderProduct.objects.filter(order_id=id)
+    context = {
+        # 'category': category,
+        'order': order,
+        'orderitems': orderitems,
+    }
+    return render(request, 'user_order_detail.html', context)
+
+
+@login_required(login_url='/login')  # Check login
+def user_order_product(request):
+    #category = Category.objects.all()
+    current_user = request.user
+    order_product = OrderProduct.objects.filter(
+        user_id=current_user.id).order_by('-id')
+    context = {  # 'category': category,
+        'order_product': order_product,
+    }
+    return render(request, 'user_order_products.html', context)
+
+
+@login_required(login_url='/login')  # Check login
+def user_order_product_detail(request, id, oid):
+    #category = Category.objects.all()
+    current_user = request.user
+    order = Order.objects.get(user_id=current_user.id, id=oid)
+    orderitems = OrderProduct.objects.filter(id=id, user_id=current_user.id)
+    context = {
+        # 'category': category,
+        'order': order,
+        'orderitems': orderitems,
+    }
+    return render(request, 'user_order_detail.html', context)
