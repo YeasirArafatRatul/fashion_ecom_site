@@ -8,6 +8,8 @@ from .models import User, UserProfile
 class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'email', 'phone')
     list_filter = ('username', 'email', 'phone')
+    readonly_fields = ('username', 'email', 'phone')
+    can_delete = False
 
     search_fields = ('email', 'username',)
 

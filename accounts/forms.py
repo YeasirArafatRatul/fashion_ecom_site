@@ -3,9 +3,9 @@ from .models import User, UserProfile
 from django.contrib.auth.forms import UserChangeForm
 from django.forms import TextInput, EmailInput, Select, FileInput
 
-#from django.contrib.auth import get_user_model
+# from django.contrib.auth import get_user_model
 
-#User = get_user_model()
+# User = get_user_model()
 
 
 class RegisterForm(forms.ModelForm):
@@ -38,6 +38,7 @@ class RegisterForm(forms.ModelForm):
 
 
 class UserUpdateForm(UserChangeForm):
+
     class Meta:
         model = User
         fields = ('username', 'email', 'phone')
@@ -46,6 +47,10 @@ class UserUpdateForm(UserChangeForm):
             'email': EmailInput(attrs={'class': 'input', 'placeholder': 'email'}),
             'phone': TextInput(attrs={'class': 'input', 'placeholder': 'phone'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(UserChangeForm, self).__init__(*args, **kwargs)
+        del self.fields['password']
 
 
 class ProfileUpdateForm(forms.ModelForm):
