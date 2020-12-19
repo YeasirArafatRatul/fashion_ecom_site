@@ -184,7 +184,7 @@ def placeorder(request):
                'form': form,
                'profile': profile,
                }
-    return render(request, 'order_Form.html', context)
+    return render(request, 'order_form.html', context)
 
 
 @login_required(login_url='/login')  # Check login
